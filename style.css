@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 1px solid #808080;
+  background-color: #fff;
+}
+
+.header-title {
+  font-family: "Pacifico", cursive;
+  font-size: 2.5rem;
+  color: #ff6347;
+  font-weight: 500;
+}
+
+.navbar-items > ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-items > ul > li {
+  padding: 13px 20px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-items > ul > li:hover {
+  color: #ff6347;
+}
+
+.login-btn {
+  padding: 8px 15px;
+  margin-left: 10px;
+  color: white;
+  background-color: #ff6347;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.login-btn:hover {
+  background-color: #e53e3e;
+}
+
+.body-container{
+  margin: 2rem 1rem;
+}
+
+.filter-search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background-color: #3E2723;
+  color: #F5EBDD;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #5c3d34;
+}
+
+.search-bar {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  font-size: 18px;
+  outline: none;
+}
+
+.search-bar:focus {
+  border-color: #3E2723;
+  box-shadow: 0 0 5px rgba(62, 39, 35, 0.3);
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-left: 2rem;
+}
+
+.res-card-container{
+  width: 270px;
+  height: auto;
+  border: 1px solid black;
+}
+
+.card-image{
+  width: 270px;
+  height: 200px;
+}
