@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
 
@@ -12,11 +13,12 @@ const Body = () => {
     const data = await fetch("https://food-ordering-app-server.vercel.app/api/proxy/swiggy/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
     const json = await data.json();
     const restaurants = json?.data.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    console.log(restaurants)
     if(restaurants){
       setRestaurantList(restaurants);
     }
   }
+
+
  
   return (
     <div className="body-container">
@@ -36,12 +38,17 @@ const Body = () => {
       </div>
 
       <div className="card-container">
-      {restaurantList.map((restaurant) => {
-       return <RestaurantCard 
-        key={restaurant.info.id}
-        resData = {restaurant.info}
-        />
-      })}
+        {
+         restaurantList.length === 0
+         ? Array(20).fill(0).map((_, index) => <Shimmer key={index} />)
+         : restaurantList.map((restaurant) => (
+             <RestaurantCard 
+               key={restaurant.info.id} 
+               resData={restaurant.info} 
+             />
+           ))
+        }
+     
       </div>
     </div>
   );
