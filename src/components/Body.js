@@ -5,6 +5,9 @@ import Shimmer from "./Shimmer";
 const Body = () => {
 
   const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+  
+
   useEffect(() => {
     fetchData();
   }, [])
@@ -25,7 +28,10 @@ const Body = () => {
 
       <div className="filter-search-container">
         <div className="filter-container">
-          <button className="filter-btn">Top Rated Restaurants</button>
+          <button className="filter-btn" onClick={() => {
+            const filteredList = restaurantList.filter((res) => res.info.avgRating > 4.5)
+            setRestaurantList(filteredList)
+          }}>Top Rated Restaurants</button>
         </div>
 
         <div className="search-bar-container">
