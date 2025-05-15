@@ -21,8 +21,6 @@ const Body = () => {
       setRestaurantList(restaurants);
     }
   }
-
-// console.log("Body rendered  again")
  
   return (
     <div className="body-container">

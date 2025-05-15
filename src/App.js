@@ -2,25 +2,46 @@ import react from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Menu from "./components/Menu";
+import Error from "./components/Error"
 
-const App = () => {
-  return (
-     <BrowserRouter>
-      <div className="app">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Body />} />
-          <Route path="/about" element={<h1>This is about section</h1>} />
-          <Route path="/menu" element={<h1>This is menu section </h1>} />
-          <Route path="/contact" element={<h1>This is contact section</h1>} />
-          <Route path="*" element={<h1>404 - Not Found</h1>}></Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
-};
+const AppLayout = () => {
+    return (
+        <div className="app">
+            <Header />
+            <Outlet />
+        </div>
+    )
+}
+
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element : <AppLayout />,
+        children : [
+            {
+                index : true,
+                element : <Body />
+            },
+            {
+                path : "about",
+                element : <h1>About Us</h1>
+            },
+            {
+                path : "contact",
+                element : <h1>Contact Us</h1>
+            },
+            {
+                path : "menu",
+                element : <h1> Menu Section</h1>
+            }
+        ]
+    }
+])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<App />);
+root.render(<RouterProvider router={appRouter} />);
