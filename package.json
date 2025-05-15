@@ -2,7 +2,7 @@
   "name": "project1-react",
   "version": "1.0.0",
   "scripts": {
-    "start" : "parcel index.html",
+    "start": "parcel index.html",
     "test": "jest"
   },
   "author": "",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^6.30.0"
   }
 }

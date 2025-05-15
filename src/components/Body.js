@@ -7,7 +7,6 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
-  
 
   useEffect(() => {
     fetchData();
@@ -23,7 +22,7 @@ const Body = () => {
     }
   }
 
-console.log("Body rendered  again")
+// console.log("Body rendered  again")
  
   return (
     <div className="body-container">
@@ -32,7 +31,7 @@ console.log("Body rendered  again")
         <div className="filter-container">
           <button className="filter-btn" onClick={() => {
             const filteredList = restaurantList.filter((res) => res.info.avgRating > 4.5);
-            setFilteredList(filteredList)
+            setFilteredList(filteredList);
           }}>Top Rated Restaurants</button>
         </div>
 
