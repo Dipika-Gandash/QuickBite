@@ -188,6 +188,11 @@ body {
   color: #555;
 }
 
+.card-link {
+  text-decoration: none; 
+  color: inherit;  
+}
+
 .shimmer-card {
   width: 270px;
   height: 400px;
@@ -218,3 +223,23 @@ body {
   width: 80%;
 }
 
+.res-info{
+  margin: 20px 500px;
+}
+
+.res-info-header h1{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.res-info-body{
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  line-height: 1.8rem;
+  font-size: 1rem;
+  color: #333;
+
+}
