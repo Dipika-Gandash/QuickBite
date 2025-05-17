@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+
+  const isOnline = useOnlineStatus(); // ✅ Correct usage of the hook
 
   return (
     <div className="header-container">
       <div className="header-img">
         <h2 className="header-title">QuickBite</h2>
+        
+        {/* Online/Offline Status Icon */}
+        <span
+          title={isOnline ? "You're Online" : "You're Offline"}
+          style={{ fontSize: "18px", marginLeft: "10px" }}
+        >
+          {isOnline ? "🟢" : "🔴"}
+        </span>
       </div>
 
       <div className="navbar-items">
@@ -55,14 +66,11 @@ const Header = () => {
               Contact
             </NavLink>
           </li>
+
           <button
             className="login-btn"
             onClick={() => {
-              if (btnName === "Login") {
-                setBtnName("Logout");
-              } else {
-                setBtnName("Login");
-              }
+              setBtnName(btnName === "Login" ? "Logout" : "Login");
             }}
           >
             {btnName}
