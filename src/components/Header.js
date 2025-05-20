@@ -11,8 +11,6 @@ const Header = () => {
     <div className="header-container">
       <div className="header-img">
         <h2 className="header-title">QuickBite</h2>
-        
-        {/* Online/Offline Status Icon */}
         <span
           title={isOnline ? "You're Online" : "You're Offline"}
           style={{ fontSize: "18px", marginLeft: "10px" }}

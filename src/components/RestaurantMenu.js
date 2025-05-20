@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useFetchMenuData from "../utils/useFetchMenuData"
+import RestaurantMenuItems from "./RestaurantMenuItems";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-  useEffect(() => {
-    fetchMenuData();
-  }, []);
-
-  const fetchMenuData = async () => {
-    const data = await fetch(
-      `https://food-ordering-app-server.vercel.app/api/proxy/swiggy/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5204303&lng=73.8567437&restaurantId=${resId}&submitAction=ENTER`
-    );
-
-    const json = await data.json();
-    setResInfo(json.data);
-    console.log(json.data);
-  };
+  const resInfo = useFetchMenuData(resId);
 
   if (resInfo === null) {
     return <h1>Loading...</h1>;
@@ -50,6 +38,8 @@ const RestaurantMenu = () => {
           🕒 {sla?.minDeliveryTime} – {sla?.maxDeliveryTime} mins
         </p>
       </div>
+    <RestaurantMenuItems resId = {resId}/>
+
     </div>
   );
 };

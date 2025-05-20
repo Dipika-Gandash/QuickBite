@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Menu from "./components/Menu";
 import Error from "./components/error"
 import RestaurantMenu from "./components/RestaurantMenu";
+import '../style.css';
 
 const AppLayout = () => {
     return (
