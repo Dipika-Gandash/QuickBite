@@ -2,14 +2,14 @@
   "name": "project1-react",
   "version": "1.0.0",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel index.html ",
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "parcel": "^2.14.4"
+    "parcel": "^2.15.2"
   },
   "dependencies": {
     "react": "^19.1.0",

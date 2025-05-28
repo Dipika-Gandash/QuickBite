@@ -5,7 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
-  const isOnline = useOnlineStatus(); // ✅ Correct usage of the hook
+  const isOnline = useOnlineStatus(); 
 
   return (
     <div className="header-container">

@@ -7,7 +7,6 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -16,7 +15,9 @@ const Body = () => {
     const data = await fetch(
       "https://food-ordering-app-server.vercel.app/api/proxy/swiggy/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
+    
     const json = await data.json();
+    console.log(json);
     const restaurants =
       json?.data.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
@@ -67,7 +68,7 @@ const Body = () => {
 
       <div className="card-container">
         {restaurantList.length === 0
-          ? Array(20)
+          ? Array(16)
               .fill(0)
               .map((_, index) => <Shimmer key={index} />)
           : filteredList.map((restaurant) => (
