@@ -21,7 +21,7 @@ const RestaurantCard = ({ resData }) => {
       </div>
 
       <div className="p-4">
-        <h3 className="text-[1.3rem] font-semibold text-black mb-2">{name}</h3>
+        <h3 className=" text-[1rem] md:text-[1.2rem] font-semibold text-black mb-2">{name}</h3>
 
         <div className="flex justify-between font-semibold text-sm text-gray-900 mb-2">
           <p>⭐ {avgRating}</p>
