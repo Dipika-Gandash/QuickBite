@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "../components/RestaurantCard";
 import { API_URL } from "../utils/constants";
 import ShimmerCard from "../components/ShimmerCard";
+import { NavLink } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -64,7 +65,7 @@ const Body = () => {
           className="bg-[#FF5722] text-white px-5 py-2 rounded-md font-semibold text-[1rem] hover:bg-[#e64a19] transition-colors duration-300 w-full sm:w-auto cursor-pointer"
           onClick={() => {
             const filteredList = restaurantList.filter(
-              (res) => res.info.avgRating >= 4.5
+              (res) => res.info.avgRating >= 4.3
             );
             setFilteredList(filteredList);
           }}
@@ -83,7 +84,7 @@ const Body = () => {
               <ShimmerCard key={index} />
             ))
           : filteredList.map((res) => (
-              <RestaurantCard key={res.info.id} resData={res} />
+              <NavLink key={res.info.id} to={`/restaurants/${res.info.id}`} ><RestaurantCard resData={res} /></NavLink>
             ))}
       </div>
     </div>

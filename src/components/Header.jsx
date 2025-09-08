@@ -1,10 +1,29 @@
 import { FiMenu, FiX } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { BsCloudCheck, BsCloudSlash } from "react-icons/bs";
+
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [btnName, setBtnName] = useState("Login")
+  const [btnName, setBtnName] = useState("Login");
+  const [showOfflineMsg, setShowOfflineMsg] = useState(false);
+  const isOnline = useOnlineStatus();
+
+useEffect(() => {
+    let timeoutId;
+    if (!isOnline) {
+      timeoutId = setTimeout(() => {
+        setShowOfflineMsg(true);
+      }, 5000);
+    } else {
+      setShowOfflineMsg(false);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [isOnline]);
+
   const navLinkClass = ({ isActive }) =>
     `py-[13px] px-5 cursor-pointer font-semibold italic text-[1.2rem] montserrat transition-colors duration-300 ${
       isActive ? "text-[#FF5722]" : "text-[#333]"
@@ -12,10 +31,11 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-between p-6 shadow-md sticky top-0 z-50 bg-white">
-      <div>
+      <div className="flex space-x-5 items-center">
         <p className=" text-[#FF5722] pacifico text-4xl md:text-5xl text-center md:text-left w-full">
           QuickBite
         </p>
+          <span title={isOnline ? "You are Online" : "You are Offline"} className="text-xl"> {isOnline ? "🟢" : "🔴"}</span>
       </div>
 
       <div className="md:hidden">
@@ -32,6 +52,7 @@ const Header = () => {
           menuOpen ? "block" : "hidden"
         } absolute top-[80px] left-0 w-full bg-white shadow-md md:shadow-none md:static md:flex md:items-center md:justify-between md:w-auto md:bg-transparent`}
       >
+        
         <div className="md:flex md:items-center md:space-x-4">
           <ul className="flex flex-col md:flex-row md:space-x-4 p-4 md:p-0">
             <li>
@@ -64,6 +85,11 @@ const Header = () => {
           </button>
         </div>
       </nav>
+       {showOfflineMsg && (
+        <div className="offline-msg fixed top-0 left-0 w-full bg-red-600 text-white text-center py-2 animate-fade-in">
+          <p>You are offline! Please check your internet connection.</p>
+        </div>
+      )}
     </header>
   );
 };
