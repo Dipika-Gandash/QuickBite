@@ -10,6 +10,7 @@ import Contact from "./pages/Contact.jsx"
 import ErrorPage from "./pages/ErrorPage.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
