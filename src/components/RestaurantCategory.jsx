@@ -1,22 +1,26 @@
-import { useState } from "react";
 import RestaurantMenuItems from "./RestaurantMenuItems";
+import { useState } from "react";
 
-const RestaurantCategory = ({ data, isNested = false }) => {
-  const [showItems, setShowItems] = useState(false);
-
+const RestaurantCategory = ({
+  data,
+  showItems,
+  setShowIndex,
+  isNested = false,
+}) => {
+  const [nestedShowIndex, setNestedShowIndex] = useState(null);
   const handleToggle = () => {
-    setShowItems(!showItems);
+    setShowIndex();
   };
 
   const isNestedCategory = Object.hasOwn(data, "categories");
   return (
     <div
-      className={`w-full bg-gray-200 shadow-md p-6 my-4 rounded-lg cursor-pointer ${
+      className={`w-full bg-gray-100 shadow-md p-6 my-4 rounded-lg cursor-pointer ${
         isNested ? "ml-4" : ""
       }`}
     >
       <div className="flex justify-between items-center" onClick={handleToggle}>
-        <span className="font-bold text-lg" >
+        <span className="font-bold text-lg">
           {data.title} (
           {isNestedCategory ? data.categories.length : data.itemCards.length})
         </span>
@@ -33,6 +37,10 @@ const RestaurantCategory = ({ data, isNested = false }) => {
                 <RestaurantCategory
                   key={nestedCategory.title + index}
                   data={nestedCategory}
+                  showItems={index === nestedShowIndex}
+                  setShowIndex={() =>
+                    setNestedShowIndex(index === nestedShowIndex ? null : index)
+                  }
                   isNested={true}
                 />
               ))}

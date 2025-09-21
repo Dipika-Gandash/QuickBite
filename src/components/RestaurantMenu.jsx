@@ -2,10 +2,12 @@ import useFetchMenuData from "../utils/useFetchMenuData";
 import { useParams } from "react-router-dom";
 import ShimmerCard1 from "./ShimmerCard1";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 export const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useFetchMenuData(resId);
+  const [showIndex, setShowIndex] = useState(0);
 
   if (!resInfo) {
     return <ShimmerCard1 />;
@@ -68,7 +70,12 @@ export const RestaurantMenu = () => {
       </div>
       <div className="w-full max-w-2xl mt-8">
         {menuCategories.map((category, index) => (
-          <RestaurantCategory key={category.title + index} data={category} />
+          <RestaurantCategory
+            key={category.title + index}
+            data={category}
+            showItems={index === showIndex}
+            setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+          />
         ))}
       </div>
     </div>
